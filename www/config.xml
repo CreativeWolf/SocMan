@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
-<widget id="net.creativewolf.socman" version="0.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:gap = "http://phonegap.com/ns/1.0">
+<widget id="net.creativewolf.socman" version="0.0.3" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:gap = "http://phonegap.com/ns/1.0">
 
     <name>SocMan</name>
 
@@ -100,7 +100,7 @@
 
     <plugin name="com.virtualartifacts.webintent" version="1.0.0" source="pgb" />
 
-    <config-file platform="android" parent="/manifest/application" mode="add" >
+    <config-file platform="android" parent="/manifest/application" mode="add">
       <activity android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale" android:label="@string/activity_name" android:name=".socman" >
        
         <intent-filter> 

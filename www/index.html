@@ -39,19 +39,142 @@
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
 
     <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/jquery.mobile.min.css" />
+    <link rel="stylesheet" href="vendor/waves/waves.min.css" />
+    <link rel="stylesheet" href="vendor/wow/animate.css" />
+    <link rel="stylesheet" href="css/nativedroid2.css" />
+
+    <link rel="stylesheet" type="text/css" href="css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" type="text/css" href="fonts/Material-Design-Iconic-Font.svg">
+    <link rel="stylesheet" type="text/css" href="fonts/Material-Design-Iconic-Font.ttf">
+
     <title>Hello World</title>
+    <style type="text/css">
+    .ui-page-theme-a .ui-header {
+    background-color: #607D8B !important;
+    color: #ffffff;
+}
+
+.fullcor{
+        background-color: #3a4d56;
+}
+
+textarea.ui-input-text.ui-textinput-autogrow.ui-focus{
+    margin-top: 4px;
+    border-bottom: 2px solid #cccccc !important;
+}
+
+textarea.ui-input-text.ui-textinput-autogrow {
+    margin-top: 4px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.43) !important;
+}
+.height{min-height: 250px !important;}
+
+.fullwidth{
+
+    width: 100%;
+    float: left;
+    text-align: center;
+}
+
+.halfwidth{
+width: 20%;float: left;
+text-align: center;
+
+}
+.head-social{
+     font-size: 19px;
+    text-align: center;
+    color: #607d8b;
+    padding: 10px;
+    background-color: rgba(128, 128, 128, 0.11);
+}
+.text-area{
+    color: white;
+    height: 40px !important;
+    background-color: rgba(255, 0, 0, 0);
+    text-shadow: 0 1px 0 rgba(243, 243, 243, 0);
+}
+.icon-css{
+
+    font-size: 30px;
+    color: rgba(255, 255, 255, 0.62);
+}
+</style>
 </head>
 
 <body>
-    <div class="app">
-        <h1>PhoneGap</h1>
-        <div id="deviceready" class="blink">
-            <p class="event listening">Connecting to Device</p>
-            <p class="event received">Device is Ready</p>
+        <div data-role="page" class="fullcor">
+
+            <nd2-include data-src="fragments/panel.left.html"></nd2-include>
+
+             <div data-role="panel" id="bottomsheet" data-animate="false" data-position='bottom' data-display="overlay">
+                <nd2-include data-src="fragments/bottom.sheet.html"></nd2-include>
+            </div> 
+
+            <div data-role="header" data-position="fixed" class="wow fadeInDown" data-wow-delay="0.2s">
+                <a href="#bottomsheet" class="ui-btn ui-btn-right wow fadeIn " data-wow-delay='1.2s'>
+                 <i class="zmdi zmdi-more-vert"></i>
+                </a>
+                <a href="#leftpanel" class="ui-btn ui-btn-left wow fadeIn" data-wow-delay='0.8s'>
+                 <i class="zmdi zmdi-menu"></i>
+                </a>
+                <h1 class="wow fadeIn" data-wow-delay='0.4s'></h1>
+            </div>
+            <div role="main" class="ui-content" data-inset="false">
+
+<!--Text Area Start-->
+            <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="box">
+            <br>
+            <textarea class="height text-area"  style=" color: white;text-shadow: rgba(243, 243, 243, 0) 0px 1px 0px !important;    background-color: rgba(255, 0, 0, 0);" cols="40" rows="8" name="textarea2" id="textarea2b" placeholder="what's happening ?"></textarea>
+            </div>
+            </div>
+<!--Text Area End-->
+
+<!--location upload Icon Start-->
+<div class="fullwidth">
+<div class="halfwidth"><i class="zmdi zmdi-pin icon-css" ></i></div>
+<div class="halfwidth"><i class="zmdi zmdi-camera icon-css"></i></div>
+<div class="halfwidth"><i class="zmdi zmdi-gif icon-css" ></i></div>
+<div style="width: 20%;float: left;color: #b4bbbe;padding-top: 6px;text-align: center;">450</div>
+<div class="halfwidth"><i class="zmdi zmdi-mail-send icon-css"></i></div>
+</div>
+<!--location upload Icon Start-->
+
+<div style="clear:both;height: 50px;">&nbsp;</div>
+
+
+<!--Social Icon Start-->
+
+<div class="head-social">Share with your Social Networks</div>
+
+<div style="clear:both;height: 50px;">&nbsp;</div>
+<div class="fullwidth">
+<div class="halfwidth"><i class="zmdi zmdi-facebook icon-css"></i></div>
+<div class="halfwidth"><i class="zmdi zmdi-google-plus icon-css"></i></div>
+<div class="halfwidth"><i class="zmdi zmdi-twitter icon-css"></i></div>
+<div class="halfwidth"><i class="zmdi zmdi-youtube icon-css"></i></div>
+<div class="halfwidth"><i class="zmdi zmdi-skype icon-css"></i></div>
+</div>
+<!--Social Icon End-->
+
+
+
+
         </div>
-    </div>
+
+        </div>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery-ui.min.js"></script>
+        <script src="js/jquery.mobile.min.js"></script>
+        <script src="vendor/waves/waves.min.js"></script>
+        <script src="vendor/wow/wow.min.js"></script>
+        <script src="js/nativedroid2.js"></script>
+        <script src="js/nd2settings.js"></script>
     <script type="text/javascript">
         app.initialize();
     </script>
