@@ -99,14 +99,6 @@
     </platform>
 
     <plugin name="com.virtualartifacts.webintent" version="1.0.0" source="pgb" />
-    <config-file platform="android" parent="/manifest/application" mode="merge" >
-        <activity android:name="SocMe" android:label="@string/app_name" android:configChanges="orientation|keyboardHidden" >
-           <intent-filter>
-              <action android:name="android.intent.action.SEND" />
-              <category android:name="android.intent.category.DEFAULT" />
-              <data android:mimeType="text/plain" />
-           </intent-filter>
-        </activity>
-    </config-file>
+
 
 </widget>
