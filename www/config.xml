@@ -100,8 +100,8 @@
 
     <plugin name="com.virtualartifacts.webintent" version="1.0.0" source="pgb" />
 
-    <config-file platform="android" parent="/manifest/application" mode="merge" >
-      <activity android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale" android:label="@string/activity_name" android:launchMode="singleTop" android:name="MainActivity" android:theme="@android:style/Theme.Black.NoTitleBar" android:windowSoftInputMode="adjustResize">
+    <config-file platform="android" parent="/manifest/application" mode="add" >
+      <activity android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale" android:label="@string/activity_name" android:name=".socman" >
        
         <intent-filter> 
             <action android:name="android.intent.action.SEND" />
