@@ -99,13 +99,9 @@
     </platform>
 
     <plugin name="com.virtualartifacts.webintent" version="1.0.0" source="pgb" />
-    
+
     <config-file platform="android" parent="/manifest/application" mode="merge" >
-        <activity android:name="SocMan" android:label="@string/app_name" android:configChanges="orientation|keyboardHidden" >
-        <intent-filter android:label="@string/launcher_name">
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+        <activity android:name=".Receive" android:label="@string/app_name" android:configChanges="orientation|keyboardHidden" >
         <intent-filter android:label="@string/app_name">
             <data android:mimeType="*/*" />
             <action android:name="android.intent.action.SEND" />                
