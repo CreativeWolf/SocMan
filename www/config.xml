@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
-<widget xmlns     = "http://www.w3.org/ns/widgets"
-        xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "net.creativewolf.socman"
-        version   = "0.0.1">
+<widget id="net.creativewolf.socman" version="0.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:gap = "http://phonegap.com/ns/1.0">
 
     <name>SocMan</name>
 
@@ -100,5 +97,16 @@
     <platform name="android">
         <allow-intent href="market:*" />
     </platform>
+
+    <plugin name="com.virtualartifacts.webintent" version="1.0.0" source="pgb" />
+    <config-file platform="android" parent="/manifest/application" mode="merge" >
+        <activity android:name="SocMe" android:label="@string/app_name" android:configChanges="orientation|keyboardHidden" >
+           <intent-filter>
+              <action android:name="android.intent.action.SEND" />
+              <category android:name="android.intent.category.DEFAULT" />
+              <data android:mimeType="text/plain" />
+           </intent-filter>
+        </activity>
+    </config-file>
 
 </widget>
