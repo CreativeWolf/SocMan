@@ -1,24 +1,5 @@
 <!DOCTYPE html>
-<!--
-    Copyright (c) 2012-2016 Adobe Systems Incorporated. All rights reserved.
 
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html>
 
 <head>
@@ -26,153 +7,62 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="msapplication-tap-highlight" content="no" />
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
-    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
-    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
-    <!-- Good default declaration:
-    * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
-    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
-    * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
-        * Enable inline JS: add 'unsafe-inline' to default-src
-        * Enable eval(): add 'unsafe-eval' to default-src
-    * Create your own at http://cspisawesome.com
-    -->
-    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline' http://fonts.googleapis.com; media-src *; img-src 'self' data:;" />
 
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     <link rel="stylesheet" href="css/font-awesome.min.css" />
     <link rel="stylesheet" href="css/jquery.mobile.min.css" />
-    <link rel="stylesheet" href="vendor/waves/waves.min.css" />
-    <link rel="stylesheet" href="vendor/wow/animate.css" />
-    <link rel="stylesheet" href="css/nativedroid2.css" />
-
+    <link rel="stylesheet" href="/vendor/waves/waves.min.css" />
+    <link rel="stylesheet" href="/vendor/wow/animate.css" />
+    <link rel="stylesheet" href="/css/nativedroid2.css" />
     <link rel="stylesheet" type="text/css" href="css/material-design-iconic-font.min.css">
     <link rel="stylesheet" type="text/css" href="fonts/Material-Design-Iconic-Font.svg">
     <link rel="stylesheet" type="text/css" href="fonts/Material-Design-Iconic-Font.ttf">
 
-    <title>Hello World</title>
-    <style type="text/css">
-    .ui-page-theme-a .ui-header {
-    background-color: #607D8B !important;
-    color: #ffffff;
-}
+    <title>SocMan</title>
 
-.fullcor{
-        background-color: #3a4d56;
-}
-
-textarea.ui-input-text.ui-textinput-autogrow.ui-focus{
-    margin-top: 4px;
-    border-bottom: 2px solid #cccccc !important;
-}
-
-textarea.ui-input-text.ui-textinput-autogrow {
-    margin-top: 4px;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.43) !important;
-}
-.height{min-height: 250px !important;}
-
-.fullwidth{
-
-    width: 100%;
-    float: left;
-    text-align: center;
-}
-
-.halfwidth{
-width: 20%;float: left;
-text-align: center;
-
-}
-.head-social{
-     font-size: 19px;
-    text-align: center;
-    color: #607d8b;
-    padding: 10px;
-    background-color: rgba(128, 128, 128, 0.11);
-}
-.text-area{
-    color: white;
-    height: 40px !important;
-    background-color: rgba(255, 0, 0, 0);
-    text-shadow: 0 1px 0 rgba(243, 243, 243, 0);
-}
-.icon-css{
-
-    font-size: 30px;
-    color: rgba(255, 255, 255, 0.62);
-}
-</style>
 </head>
 
 <body>
-        <div data-role="page" class="fullcor">
+    <body>
 
-            <nd2-include data-src="fragments/panel.left.html"></nd2-include>
+        <div data-role="page">
 
-             <div data-role="panel" id="bottomsheet" data-animate="false" data-position='bottom' data-display="overlay">
-                <nd2-include data-src="fragments/bottom.sheet.html"></nd2-include>
-            </div> 
+            <nd2-include data-src="panel.left.html"></nd2-include>
 
-            <div data-role="header" data-position="fixed" class="wow fadeInDown" data-wow-delay="0.2s">
-                <a href="#bottomsheet" class="ui-btn ui-btn-right wow fadeIn " data-wow-delay='1.2s'>
-                 <i class="zmdi zmdi-more-vert"></i>
-                </a>
-                <a href="#leftpanel" class="ui-btn ui-btn-left wow fadeIn" data-wow-delay='0.8s'>
-                 <i class="zmdi zmdi-menu"></i>
-                </a>
-                <h1 class="wow fadeIn" data-wow-delay='0.4s'></h1>
+
+            <div data-role="header" data-position="fixed" class="wow fadeIn">
+                <a href="#leftpanel" class="ui-btn ui-btn-left wow fadeIn" data-wow-delay='0.8s'><i class="zmdi zmdi-menu"></i></a>
+                <h1 class="wow fadeIn" data-wow-delay='0.4s'>SocMan</h1>
             </div>
-            <div role="main" class="ui-content" data-inset="false">
 
-<!--Text Area Start-->
-            <div class="col-xs-12 col-sm-6 col-md-4">
-            <div class="box">
-            <br>
-            <textarea class="height text-area"  style=" color: white;text-shadow: rgba(243, 243, 243, 0) 0px 1px 0px !important;    background-color: rgba(255, 0, 0, 0);" cols="40" rows="8" name="textarea2" id="textarea2b" placeholder="what's happening ?"></textarea>
+
+            <div role="main" class="ui-content wow fadeIn" data-wow-delay="0.2s"  data-inset="false">
+
+            <div class="row center-xs">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <textarea cols="40" rows="8" name="textarea2" id="textarea2b" style="height: 100px !important;" placeholder="What's happening...?"></textarea>
+                    </div>
+                    <div class="box">
+                    <button class="ui-btn ui-btn-inline ui-btn-fab ui-btn-raised clr-primary waves-effect waves-button waves-effect waves-button">
+                    <i class="zmdi zmdi-twitter zmdi-hc-3x"></i>
+                    </button>
+                    </div>                  
+                </div>
             </div>
+
             </div>
-<!--Text Area End-->
-
-<!--location upload Icon Start-->
-<div class="fullwidth">
-<div class="halfwidth"><i class="zmdi zmdi-pin icon-css" ></i></div>
-<div class="halfwidth"><i class="zmdi zmdi-camera icon-css"></i></div>
-<div class="halfwidth"><i class="zmdi zmdi-gif icon-css" ></i></div>
-<div style="width: 20%;float: left;color: #b4bbbe;padding-top: 6px;text-align: center;">450</div>
-<div class="halfwidth"><i class="zmdi zmdi-mail-send icon-css"></i></div>
-</div>
-<!--location upload Icon Start-->
-
-<div style="clear:both;height: 50px;">&nbsp;</div>
-
-
-<!--Social Icon Start-->
-
-<div class="head-social">Share with your Social Networks</div>
-
-<div style="clear:both;height: 50px;">&nbsp;</div>
-<div class="fullwidth">
-<div class="halfwidth"><i class="zmdi zmdi-facebook icon-css"></i></div>
-<div class="halfwidth"><i class="zmdi zmdi-google-plus icon-css"></i></div>
-<div class="halfwidth"><i class="zmdi zmdi-twitter icon-css"></i></div>
-<div class="halfwidth"><i class="zmdi zmdi-youtube icon-css"></i></div>
-<div class="halfwidth"><i class="zmdi zmdi-skype icon-css"></i></div>
-</div>
-<!--Social Icon End-->
-
-
-
-
-        </div>
 
         </div>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
-        <script src="js/jquery.min.js"></script>
-        <script src="js/jquery-ui.min.js"></script>
-        <script src="js/jquery.mobile.min.js"></script>
-        <script src="vendor/waves/waves.min.js"></script>
-        <script src="vendor/wow/wow.min.js"></script>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
+        <script src="/vendor/waves/waves.min.js"></script>
+        <script src="/vendor/wow/wow.min.js"></script>
         <script src="js/nativedroid2.js"></script>
         <script src="js/nd2settings.js"></script>
     <script type="text/javascript">
