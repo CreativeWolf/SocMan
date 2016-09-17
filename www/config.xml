@@ -21,6 +21,11 @@
     <!-- android: MIN SDK version supported on the target device. MAX version is blank by default. -->
     <preference name="android-minSdkVersion"      value="14" />
 
+    <preference name="show-splash-screen-spinner" value="true"/>
+    <preference name="auto-hide-splash-screen" value="true"/>
+    <preference name="FadeSplashScreen" value="false"/>
+    <preference name="SplashScreenDelay" value="10000" />
+
     <!-- Define a specific version of PhoneGap to build into your app. -->
     <!-- <preference name="phonegap-version"       value="cli-6.0.0" /> -->
 
@@ -46,6 +51,8 @@
     <plugin name="cordova-plugin-statusbar"           source="npm" spec="~2.1.2" />
     <plugin name="cordova-plugin-vibration"           source="npm" spec="~2.1.0" />
     <plugin name="cordova-plugin-whitelist"           source="npm" spec="~1.2.1" />
+    <plugin name="com.virtualartifacts.webintent" version="1.0.0" source="pgb" />
+    <gap:plugin name="org.apache.cordova.splashscreen" source="npm" />
 
     <!-- Define app icon and splashscreen for each platform. -->
     <icon src="icon.png" />
@@ -98,7 +105,7 @@
         <allow-intent href="market:*" />
     </platform>
 
-    <plugin name="com.virtualartifacts.webintent" version="1.0.0" source="pgb" />
+    
 
     <config-file platform="android" parent="/manifest/application" mode="add">
       <activity android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale" android:label="@string/activity_name" android:name=".socman" >
