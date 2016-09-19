@@ -21,6 +21,7 @@
     <!-- android: MIN SDK version supported on the target device. MAX version is blank by default. -->
     <preference name="android-minSdkVersion"      value="14" />
 
+   <preference name="SplashScreen" value="screen"/>
    <preference name="AutoHideSplashScreen" value="true" />
    <preference name="SplashScreenDelay" value="10000" />
    <preference name="SplashMaintainAspectRatio" value="true" />
@@ -63,7 +64,7 @@
         <icon   src="res/icon/android/drawable-xhdpi-icon.png"              density="xhdpi" />
         <icon   src="res/icon/android/drawable-xxhdpi-icon.png"             density="xxhdpi" />
         <icon   src="res/icon/android/drawable-xxxhdpi-icon.png"            density="xxxhdpi" />
-        
+
 	    <splash src="res/screen/android/splash-land-hdpi.png" density="land-hdpi"/>
 	    <splash src="res/screen/android/splash-land-ldpi.png" density="land-ldpi"/>
 	    <splash src="res/screen/android/splash-land-mdpi.png" density="land-mdpi"/>
