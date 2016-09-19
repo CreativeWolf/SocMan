@@ -47,12 +47,11 @@
     <plugin name="cordova-plugin-inappbrowser"        source="npm" spec="~1.3.0" />
     <plugin name="cordova-plugin-media"               source="npm" spec="~2.2.0" />
     <plugin name="cordova-plugin-network-information" source="npm" spec="~1.2.0" />
-    <plugin name="cordova-plugin-splashscreen"        source="npm" spec="~3.2.1" />
+    <plugin name="cordova-plugin-splashscreen"        source="npm" spec="*" />
     <plugin name="cordova-plugin-statusbar"           source="npm" spec="~2.1.2" />
     <plugin name="cordova-plugin-vibration"           source="npm" spec="~2.1.0" />
     <plugin name="cordova-plugin-whitelist"           source="npm" spec="~1.2.1" />
     <plugin name="com.virtualartifacts.webintent" version="1.0.0" source="pgb" />
-    <gap:plugin name="org.apache.cordova.splashscreen" source="npm" />
 
     <!-- Define app icon and splashscreen for each platform. -->
     <icon src="icon.png" />
@@ -75,17 +74,6 @@
         <splash src="res/screen/android/drawable-port-xhdpi-screen.png"     density="port-xhdpi" />
         <splash src="res/screen/android/drawable-port-xxhdpi-screen.png"    density="port-xxhdpi" />
         <splash src="res/screen/android/drawable-port-xxxhdpi-screen.png"   density="port-xxxhdpi" />
-
-        <splash src="res/screen/android/splash-land-hdpi.png" density="land-hdpi"/>
-        <splash src="res/screen/android/splash-land-ldpi.png" density="land-ldpi"/>
-        <splash src="res/screen/android/splash-land-mdpi.png" density="land-mdpi"/>
-        <splash src="res/screen/android/splash-land-xhdpi.png" density="land-xhdpi"/>
-
-        <splash src="res/screen/android/splash-port-hdpi.png" density="port-hdpi"/>
-        <splash src="res/screen/android/splash-port-ldpi.png" density="port-ldpi"/>
-        <splash src="res/screen/android/splash-port-mdpi.png" density="port-mdpi"/>
-        <splash src="res/screen/android/splash-port-xhdpi.png" density="port-xhdpi"/>
-
     </platform>
 
     <!--
