@@ -25,6 +25,8 @@
     <preference name="auto-hide-splash-screen" value="true"/>
     <preference name="FadeSplashScreen" value="false"/>
     <preference name="SplashScreenDelay" value="10000" />
+    <preference name = "SplashScreen" value = "screen" />
+    <preference name = "SplashMaintainAspectRatio" value = "true" />
 
     <!-- Define a specific version of PhoneGap to build into your app. -->
     <!-- <preference name="phonegap-version"       value="cli-6.0.0" /> -->
