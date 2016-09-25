@@ -96,10 +96,10 @@ function authorize(o) {
  
 }
 
-function tweet(){
+function sendTweet(){
 
         navigator.notification.alert(
-            reply.oauth_token,  // message
+            '+reply.oauth_token+',  // message
             'Tweeting',            // title
             'Done'                  // buttonName
         ); 
@@ -108,8 +108,8 @@ function tweet(){
         var param = {"status": $('#tweet').val()};                                
 
         navigator.notification.alert(
-            $('#tweet').val(),  // message
-            'Tweeting',            // title
+            'Tweeted',  // message
+            'Tweeted',            // title
             'Done'                  // buttonName
         ); 
                         cb.__call(
@@ -121,7 +121,7 @@ function tweet(){
 
         navigator.notification.alert(
             'Tweet Sent',  // message
-            'Tweeted',            // title
+            'Tweetsent',            // title
             'Done'                  // buttonName
         ); 
 
@@ -176,7 +176,7 @@ function tweet(){
                 </tr>
                 <tr id="tweetBtn">
                     <td colspan="2" align="right">
-                        <button id="tweeter" onclick="tweet();">Tweet</button>
+                        <button id="tweeter" onclick="sendTweet();">Tweet</button>
                     </td>
                 </tr>
                 <tr><td colspan="2"><div id="welcome">Please Login to use this app</div></td></tr>
