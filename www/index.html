@@ -70,11 +70,12 @@
             'Done'                  // buttonName
         ); 
 
-        cb.setToken("6284702-yVGu4w6CAR4gOQ5dMXXg5wpsfZK8S7wJq7uKasduvv", "4gWGRLT8exgVMBLYsosbS3agYIeqUOYUZ5uarmJB0ptcI");                                
+        cb.setToken("6284702-yVGu4w6CAR4gOQ5dMXXg5wpsfZK8S7wJq7uKasduvv", "4gWGRLT8exgVMBLYsosbS3agYIeqUOYUZ5uarmJB0ptcI");
+        var param = {"status": $('#tweet').val()};                                
 
                         cb.__call(
                             "statuses_update",
-                            {"status": "Testing"},
+                            param,
                             function (reply, rate, err) {
                                 // ...
                             }
