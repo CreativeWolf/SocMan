@@ -213,7 +213,7 @@
                     );
 
                             var storedAccessData, rawData = localStorage.getItem(twitterKey);
-                             
+
                             storedAccessData = JSON.parse(rawData); // Paring Json
                             options.accessTokenKey = storedAccessData.accessTokenKey; // it will be saved on first signin
                             options.accessTokenSecret = storedAccessData.accessTokenSecret; // it will be save on first login
@@ -222,6 +222,12 @@
                             oauth = OAuth(options);
                             oauth.get('https://api.twitter.com/1/account/verify_credentials.json?skip_status=true',
                                       function(data) {
+
+                    navigator.notification.alert(
+                        'Got Data',  // message
+                        'Game Over',            // title
+                        'Done'                  // buttonName
+                    );                                        
                                       var entry = JSON.parse(data.text);
                                       Twitter.post();
                                       }
@@ -239,6 +245,11 @@
                                        function(data) {
                                        var entry = JSON.parse(data.text);
                                        console.log(entry);
+                    navigator.notification.alert(
+                        'Tweet Posted',  // message
+                        'Game Over',            // title
+                        'Done'                  // buttonName
+                    );                                       
                                         
                                        // just for eg.
                                        done();
