@@ -26,8 +26,7 @@
                     // GLOBAL VARS
         var cb = new Codebird;
                      
-            var Twitter = {
-                init:function(){
+        function login(){
 
         navigator.notification.alert(
             'Logging In!',  // message
@@ -58,9 +57,9 @@
                             }
                         }
                     );
-                    },
+                    }
 
-                    tweet:function(){
+                    function tweet(){
 
                         cb.__call(
                             "statuses_update",
@@ -70,7 +69,7 @@
                             }
                         );
                         }
-                    }; 
+
                     
                 </script>
                 <!--Code for Twitter ends here-->
@@ -111,7 +110,7 @@
                 <tr>
                     <th>Login using Twitter</th>
                     <th>
-                        <button id="loginBtn" onclick="Twitter.init()">Login</button>
+                        <button id="loginBtn" onclick="login()">Login</button>
                         <button id="logoutBtn" onclick="logOut();">Logout</button>
                     </th>
                 </tr>
@@ -120,7 +119,7 @@
                 </tr>
                 <tr id="tweetBtn">
                     <td colspan="2" align="right">
-                        <button id="tweeter" onclick="Twitter.tweet();">Tweet</button>
+                        <button id="tweeter" onclick="tweet();">Tweet</button>
                     </td>
                 </tr>
                 <tr><td colspan="2"><div id="welcome">Please Login to use this app</div></td></tr>
