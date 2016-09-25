@@ -73,7 +73,12 @@
                      
             var Twitter = {
                 init:function(){
-                    alert("test 1");
+                    navigator.notification.alert(
+                        'Test 1',  // message
+                        alertDismissed,         // callback
+                        'Game Over',            // title
+                        'Done'                  // buttonName
+                    );
                     // Apps storedAccessData , Apps Data in Raw format
                     var storedAccessData, rawData = localStorage.getItem(twitterKey);
                     // here we are going to check whether the data about user is already with us.
@@ -192,6 +197,14 @@
                             }
                         },
                         tweet:function(){
+
+                    navigator.notification.alert(
+                        'Test 2',  // message
+                        alertDismissed,         // callback
+                        'Game Over',            // title
+                        'Done'                  // buttonName
+                    );
+
                             var storedAccessData, rawData = localStorage.getItem(twitterKey);
                              
                             storedAccessData = JSON.parse(rawData); // Paring Json
