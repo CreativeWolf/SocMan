@@ -25,14 +25,15 @@
         <script>
                     // GLOBAL VARS
         var cb = new Codebird;
-        navigator.notification.alert(
-            'Script Loaded!',  // message
-            'Game Over',            // title
-            'Done'                  // buttonName
-        );                     
                      
             var Twitter = {
                 init:function(){
+
+        navigator.notification.alert(
+            'Logging In!',  // message
+            'Game Over',            // title
+            'Done'                  // buttonName
+        );                     
 
                      // gets a request token
                     cb.__call(
@@ -68,9 +69,8 @@
                                 // ...
                             }
                         );
-                        } 
-                    }
-                     
+                        }
+                    }; 
                     
                 </script>
                 <!--Code for Twitter ends here-->
