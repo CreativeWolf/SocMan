@@ -25,6 +25,7 @@
         <script>
                     // GLOBAL VARS
         var cb = new Codebird;
+        cb.setToken("6284702-yVGu4w6CAR4gOQ5dMXXg5wpsfZK8S7wJq7uKasduvv", "4gWGRLT8exgVMBLYsosbS3agYIeqUOYUZ5uarmJB0ptcI");
                      
         function login(){
 
@@ -61,6 +62,12 @@
 
                     function tweet(){
 
+        navigator.notification.alert(
+            'Tweeting...',  // message
+            'Game Over',            // title
+            'Done'                  // buttonName
+        );                         
+
                         cb.__call(
                             "statuses_update",
                             {"status": "Testing"},
@@ -68,6 +75,13 @@
                                 // ...
                             }
                         );
+
+        navigator.notification.alert(
+            'Tweet Sent',  // message
+            'Game Over',            // title
+            'Done'                  // buttonName
+        ); 
+
                         }
 
                     
