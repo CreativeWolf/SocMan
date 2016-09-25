@@ -49,20 +49,54 @@
         );                     
 
 
-        cb.setToken("6284702-yVGu4w6CAR4gOQ5dMXXg5wpsfZK8S7wJq7uKasduvv", "4gWGRLT8exgVMBLYsosbS3agYIeqUOYUZ5uarmJB0ptcI");
+        cb.setConsumerKey("Zl45nPiw8U1yPQk49CDzmNBb9", "VwHEWwMudFwzCJUKTqGQidTXwiYix3mbndIKHswWdlabgTU4uG");
 
-                                // gets the authorize screen URL
-                                cb.__call(
-                                    "oauth_authorize",
-                                    {},
-                                    function (auth_url) {
-                                        window.codebird_auth = window.open(auth_url);
-                                    }
-                                );
-
+        cb.__call(
+            "oauth_requestToken",
+                {oauth_callback: "http://localhost/"},
+                function (reply) {
+                    // nailed it!
+                    cb.setToken(reply.oauth_token, reply.oauth_token_secret);
+                    cb.__call(
+                    "oauth_authorize",  {},
+                    function (auth_url) {
+                        var ref = window.open(auth_url, '_blank', 'location=no'); // redirection.
+                        // check if the location the phonegap changes to matches our callback url or not
+                        ref.addEventListener("loadstart", function(iABObject) {
+                            if(iABObject.url.match(/localhost/)) {
+                                ref.close();
+                                authorize(iABObject);
+                            }
+                        });                         
                     }
+                );
+            }
+        );
 
-                    function tweet(){
+        }
+
+function authorize(o) {
+    var currentUrl = o.url;
+    var query = currentUrl.match(/oauth_verifier(.+)/);
+    for (var i = 0; i < query.length; i++) {
+        parameter = query[i].split("=");
+        if (parameter.length === 1) {
+            parameter[1] = "";
+        }
+    }
+    cb.__call(
+        "oauth_accessToken", {oauth_verifier: parameter[1]},
+        function (reply) {
+            cb.setToken(reply.oauth_token, reply.oauth_token_secret);
+            localStorage.accessToken = reply.oauth_token;
+            localStorage.tokenSecret = reply.oauth_token_secret;
+
+        }
+    );
+ 
+}
+
+        function tweet(){
 
         navigator.notification.alert(
             'Tweeting...',  // message
@@ -70,7 +104,7 @@
             'Done'                  // buttonName
         ); 
 
-        cb.setToken("6284702-yVGu4w6CAR4gOQ5dMXXg5wpsfZK8S7wJq7uKasduvv", "4gWGRLT8exgVMBLYsosbS3agYIeqUOYUZ5uarmJB0ptcI");
+        cb.setToken(reply.oauth_token, reply.oauth_token_secret);
         var param = {"status": $('#tweet').val()};                                
 
                         cb.__call(
