@@ -73,15 +73,17 @@
                      
             var Twitter = {
                 init:function(){
-                    navigator.notification.alert(
-                        'Test 1',  // message
-                        'Game Over',            // title
-                        'Done'                  // buttonName
-                    );
+
                     // Apps storedAccessData , Apps Data in Raw format
                     var storedAccessData, rawData = localStorage.getItem(twitterKey);
                     // here we are going to check whether the data about user is already with us.
                     if(localStorage.getItem(twitterKey) !== null){
+
+                    navigator.notification.alert(
+                        'Twitter Key Not Null',  // message
+                        'Game Over',            // title
+                        'Done'                  // buttonName
+                    );
                     // when App already knows data
                     storedAccessData = JSON.parse(rawData); //JSON parsing
                     //options.accessTokenKey = storedAccessData.accessTokenKey; // data will be saved when user first time signin
@@ -97,7 +99,14 @@
                         );
                     }
                     else {
-                        // we have no data for save user
+
+
+                    navigator.notification.alert(
+                        'Twitter Key Null',  // message
+                        'Game Over',            // title
+                        'Done'                  // buttonName
+                    );
+                                            // we have no data for save user
                         oauth = OAuth(options);
                         oauth.get('https://api.twitter.com/oauth/request_token',
                         function(data) {
@@ -182,7 +191,7 @@
                                            
                                           // Now we have to close the child browser because everthing goes on track.
                                           
-                                          window.close();
+                                          cb.close();
                                           },
                                           function(data) {
                                           console.log(data);
