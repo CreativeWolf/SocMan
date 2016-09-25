@@ -10,7 +10,7 @@
     <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline' http://fonts.googleapis.com; media-src *; img-src 'self' data:;" />
 
     <title>SocMan</title>
-    
+
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     <link rel="stylesheet" href="css/nativedroid2.css" />
     <link rel="stylesheet" href="css/font-awesome.min.css" />
@@ -39,7 +39,6 @@
         <script>
                     // GLOBAL VARS
         var cb = new Codebird;
-        cb.setToken("6284702-yVGu4w6CAR4gOQ5dMXXg5wpsfZK8S7wJq7uKasduvv", "4gWGRLT8exgVMBLYsosbS3agYIeqUOYUZ5uarmJB0ptcI");
                      
         function login(){
 
@@ -49,17 +48,8 @@
             'Done'                  // buttonName
         );                     
 
-                     // gets a request token
-                    cb.__call(
-                        "oauth_requestToken",
-                        {oauth_callback: "oob"},
-                        function (reply,rate,err) {
-                            if (err) {
-                                console.log("error response or timeout exceeded" + err.error);
-                            }
-                            if (reply) {
-                                // stores it
-                                cb.setToken(reply.oauth_token, reply.oauth_token_secret);
+
+        cb.setToken("6284702-yVGu4w6CAR4gOQ5dMXXg5wpsfZK8S7wJq7uKasduvv", "4gWGRLT8exgVMBLYsosbS3agYIeqUOYUZ5uarmJB0ptcI");
 
                                 // gets the authorize screen URL
                                 cb.__call(
@@ -69,9 +59,7 @@
                                         window.codebird_auth = window.open(auth_url);
                                     }
                                 );
-                            }
-                        }
-                    );
+
                     }
 
                     function tweet(){
@@ -80,7 +68,9 @@
             'Tweeting...',  // message
             'Tweeting',            // title
             'Done'                  // buttonName
-        );                         
+        ); 
+
+        cb.setToken("6284702-yVGu4w6CAR4gOQ5dMXXg5wpsfZK8S7wJq7uKasduvv", "4gWGRLT8exgVMBLYsosbS3agYIeqUOYUZ5uarmJB0ptcI");                                
 
                         cb.__call(
                             "statuses_update",
