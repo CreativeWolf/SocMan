@@ -9,6 +9,8 @@
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
     <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline' http://fonts.googleapis.com; media-src *; img-src 'self' data:;" />
 
+    <title>SocMan</title>
+    
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     <link rel="stylesheet" href="css/nativedroid2.css" />
     <link rel="stylesheet" href="css/font-awesome.min.css" />
@@ -19,7 +21,19 @@
     <link rel="stylesheet" type="text/css" href="fonts/Material-Design-Iconic-Font.svg">
     <link rel="stylesheet" type="text/css" href="fonts/Material-Design-Iconic-Font.ttf">
 
-    <title>SocMan</title>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
+    <script src="vendor/waves/waves.min.js"></script>
+    <script src="vendor/wow/wow.min.js"></script>
+    <script src="js/nativedroid2.js"></script>
+    <script src="js/nd2settings.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/sha1.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/charenc.js"></script> 
+    <script type="text/javascript" charset="utf-8" src="js/codebird.js"></script>    
+
 
         <!--Below is the code for twitter-->
         <script>
@@ -31,7 +45,7 @@
 
         navigator.notification.alert(
             'Logging In!',  // message
-            'Game Over',            // title
+            'Logging',            // title
             'Done'                  // buttonName
         );                     
 
@@ -64,7 +78,7 @@
 
         navigator.notification.alert(
             'Tweeting...',  // message
-            'Game Over',            // title
+            'Tweeting',            // title
             'Done'                  // buttonName
         );                         
 
@@ -78,7 +92,7 @@
 
         navigator.notification.alert(
             'Tweet Sent',  // message
-            'Game Over',            // title
+            'Tweeted',            // title
             'Done'                  // buttonName
         ); 
 
@@ -144,18 +158,7 @@
             </div>
 
         </div>
-    <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
-    <script src="vendor/waves/waves.min.js"></script>
-    <script src="vendor/wow/wow.min.js"></script>
-    <script src="js/nativedroid2.js"></script>
-    <script src="js/nd2settings.js"></script>
-    <script type="text/javascript" charset="utf-8" src="js/sha1.js"></script>
-    <script type="text/javascript" charset="utf-8" src="js/charenc.js"></script> 
-    <script type="text/javascript" charset="utf-8" src="js/codebird.js"></script> 
+ 
     <script type="text/javascript">
         app.initialize();
     </script>
