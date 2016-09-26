@@ -100,8 +100,7 @@ function sendTweet(){
         var oauthsec = window.localStorage.getItem("tokenSecret");
 
         cb.setToken(oauthtok, oauthsec);
-        var param = {"status": $('#tweet').val()};
-
+        var param = "status=" + $('#tweet').val();
 
         navigator.notification.alert( param, 'Tweet Message', 'Done' );
                        cb.__call(
@@ -110,8 +109,6 @@ function sendTweet(){
                             navigator.notification.alert( err, 'Error Message', 'Done' );
                             }
                         );
-
-        navigator.notification.alert( param, 'Tweet Sent', 'Done' );
 
 }
 
