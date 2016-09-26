@@ -103,9 +103,8 @@ function sendTweet(){
         var param = "status=" + $('#tweet').val();
         var params = { status: "Fish & chips" };
 
-        navigator.notification.alert( params, 'Tweet Message', 'Done' );
                        cb.__call(
-                            "statuses_update", params,
+                            "statuses_update", {"status": "Whohoo, I just tweeted!"},
                             function (reply, rate, err) {
                             navigator.notification.alert( err, 'Error Message', 'Done' );
                             }
