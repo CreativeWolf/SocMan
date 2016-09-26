@@ -38,9 +38,14 @@
         <!--Below is the code for twitter-->
         <script>
                     // GLOBAL VARS
-        var cb = new Codebird;
-                     
         function login(){
+
+        var cb = new Codebird;
+        var cb          = new Codebird;
+        var current_url = location.toString();
+        var query       = current_url.match(/\?(.+)$/).split("&amp;");
+        var parameters  = {};
+        var parameter;
 
         navigator.notification.alert(
             'Logging In!',  // message
@@ -51,48 +56,42 @@
 
         cb.setConsumerKey("Zl45nPiw8U1yPQk49CDzmNBb9", "VwHEWwMudFwzCJUKTqGQidTXwiYix3mbndIKHswWdlabgTU4uG");
 
-        cb.__call(
-            "oauth_requestToken",
-                {oauth_callback: "http://localhost/"},
-                function (reply) {
-                    // nailed it!
-                    cb.setToken(reply.oauth_token, reply.oauth_token_secret);
-                    cb.__call(
-                    "oauth_authorize",  {},
-                    function (auth_url) {
-                        var ref = window.open(auth_url, '_blank', 'location=no'); // redirection.
-                        // check if the location the phonegap changes to matches our callback url or not
-                        ref.addEventListener("loadstart", function(iABObject) {
-                            if(iABObject.url.match(/localhost/)) {
-                                ref.close();
-                                authorize(iABObject);
-                            }
-                        });                         
-                    }
-                );
+        for (var i = 0; i < query.length; i++) {
+            parameter = query[i].split("=");
+            if (parameter.length === 1) {
+                parameter[1] = "";
             }
-        );
-
+            parameters[decodeURIComponent(parameter[0])] = decodeURIComponent(parameter[1]);
         }
 
-function authorize(o) {
-    var currentUrl = o.url;
-    var query = currentUrl.match(/oauth_verifier(.+)/);
-    for (var i = 0; i < query.length; i++) {
-        parameter = query[i].split("=");
-        if (parameter.length === 1) {
-            parameter[1] = "";
-        }
-    }
-    cb.__call(
-        "oauth_accessToken", {oauth_verifier: parameter[1]},
-        function (reply) {
+        // check if oauth_verifier is set
+        if (typeof parameters.oauth_verifier !== "undefined") {
+
+            // assign stored request token parameters to codebird here
+            // ...
             cb.setToken(reply.oauth_token, reply.oauth_token_secret);
-            window.localStorage.setItem("accessToken", reply.oauth_token);
-            window.localStorage.setItem("tokenSecret", reply.oauth_token_secret);
+
+            cb.__call(
+                "oauth_accessToken",
+                {
+                    oauth_verifier: parameters.oauth_verifier
+                },
+                function (reply, rate, err) {
+                    if (err) {
+                        console.log("error response or timeout exceeded" + err.error);
+                    }
+                    if (reply) {
+                        cb.setToken(reply.oauth_token, reply.oauth_token_secret);
+                    }
+
+                    // if you need to persist the login after page reload,
+                    // consider storing the token in a cookie or HTML5 local storage
+                    window.localStorage.setItem("accessToken", reply.oauth_token);
+                    window.localStorage.setItem("tokenSecret", reply.oauth_token_secret);
+                }
+            );
         }
-    );
- 
+
 }
 
 function sendTweet(){
