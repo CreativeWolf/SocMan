@@ -39,7 +39,9 @@
         <script>
                     // GLOBAL VARS
         var cb = new Codebird;
-                     
+
+        cb.setConsumerKey("Zl45nPiw8U1yPQk49CDzmNBb9", "VwHEWwMudFwzCJUKTqGQidTXwiYix3mbndIKHswWdlabgTU4uG");
+                             
         function login(){
 
         navigator.notification.alert(
@@ -48,8 +50,6 @@
             'Done'                  // buttonName
         );                     
 
-
-        cb.setConsumerKey("Zl45nPiw8U1yPQk49CDzmNBb9", "VwHEWwMudFwzCJUKTqGQidTXwiYix3mbndIKHswWdlabgTU4uG");
 
         cb.__call(
             "oauth_requestToken",
@@ -90,15 +90,15 @@ function authorize(o) {
             cb.setToken(reply.oauth_token, reply.oauth_token_secret);
             window.localStorage.setItem("accessToken", reply.oauth_token);
             window.localStorage.setItem("tokenSecret", reply.oauth_token_secret);
-            var oauthtok = window.localStorage.getItem("accessToken");
-            var oauthsec = window.localStorage.getItem("tokenSecret");            
+            
         }
     );
  
 }
 
 function sendTweet(){
-        navigator.notification.alert( oauthsec, 'OAuth Secret', 'Done' );
+            var oauthtok = window.localStorage.getItem("accessToken");
+            var oauthsec = window.localStorage.getItem("tokenSecret");
         cb.setToken(oauthtok, oauthsec);
         var param = $('#tweet').val();
 
