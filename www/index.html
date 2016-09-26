@@ -98,7 +98,7 @@ function authorize(o) {
 }
 
 function sendTweet(){
-
+        navigator.notification.alert( oauthsec, 'OAuth Secret', 'Done' );
         cb.setToken(oauthtok, oauthsec);
         var param = $('#tweet').val();
 
