@@ -101,10 +101,10 @@ function sendTweet(){
 
         cb.setToken(oauthtok, oauthsec);
         var param = "status=" + $('#tweet').val();
-        var params = { status: "Fish & chips" };
+        var params = { "status: 'Fish & chips'" };
 
                        cb.__call(
-                            "statuses_update", {"status": "Whohoo, I just tweeted!"},
+                            "statuses_update", params,
                             function (reply, rate, err) {
                             navigator.notification.alert( err, 'Error Message', 'Done' );
                             }
