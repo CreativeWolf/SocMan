@@ -97,29 +97,22 @@ function authorize(o) {
 
 function sendTweet(){
         var oauthtok = window.localStorage.getItem("accessToken");
-        navigator.notification.alert( oauthtok, 'Tweeting', 'Done' ); 
-        navigator.notification.alert( $('#tweet').val(), 'Tweet Message', 'Done' );
-        cb.setToken(reply.oauth_token, reply.oauth_token_secret);
+        var oauthsec = window.localStorage.getItem("tokenSecret");
+        // navigator.notification.alert( oauthtok, 'Tweeting', 'Done' ); 
+        // navigator.notification.alert( $('#tweet').val(), 'Tweet Message', 'Done' );
+        cb.setToken(oauthtok, oauthsec);
         var param = {"status": $('#tweet').val()};
 
 
-        navigator.notification.alert(
-            'Tweeted',  // message
-            'Tweeted',            // title
-            'Done'                  // buttonName
-        ); 
-                        cb.__call(
+        navigator.notification.alert( $('#tweet').val(), 'Tweet Message', 'Done' );
+                       cb.__call(
                             "statuses_update", param,
                             function (reply, rate, err) {
                                 // ...
                             }
                         );
 
-        navigator.notification.alert(
-            'Tweet Sent',  // message
-            'Tweetsent',            // title
-            'Done'                  // buttonName
-        ); 
+        navigator.notification.alert( $('#tweet').val(), 'Tweet Sent', 'Done' );
 
 }
 
