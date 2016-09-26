@@ -98,9 +98,10 @@ function authorize(o) {
 function sendTweet(){
         var oauthtok = window.localStorage.getItem("accessToken");
         navigator.notification.alert( oauthtok, 'Tweeting', 'Done' ); 
-
+        navigator.notification.alert( $('#tweet').val(), 'Tweet Message', 'Done' );
         cb.setToken(reply.oauth_token, reply.oauth_token_secret);
-        var param = {"status": $('#tweet').val()};                                
+        var param = {"status": $('#tweet').val()};
+
 
         navigator.notification.alert(
             'Tweeted',  // message
