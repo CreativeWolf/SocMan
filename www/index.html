@@ -88,8 +88,14 @@ function authorize(o) {
         "oauth_accessToken", {oauth_verifier: parameter[1]},
         function (reply) {
             cb.setToken(reply.oauth_token, reply.oauth_token_secret);
-            localStorage.accessToken = reply.oauth_token;
-            localStorage.tokenSecret = reply.oauth_token_secret;
+            window.localStorage.setItem("accessToken", reply.oauth_token);
+            window.localStorage.setItem("tokenSecret", reply.oauth_token_secret);
+
+        navigator.notification.alert(
+            '+reply.oauth_token+',  // message
+            'Tweeting',            // title
+            'Done'                  // buttonName
+        );             
 
         }
     );
