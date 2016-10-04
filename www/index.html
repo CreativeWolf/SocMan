@@ -40,6 +40,31 @@
                     // GLOBAL VARS
         var cb = new Codebird;
 
+        var keysDB = window.sqlitePlugin.openDatabase({name: "keysDB.db", location: 'default'});
+
+        keysDB.transaction(function(transaction) {
+        transaction.executeSql('CREATE TABLE IF NOT EXISTS allkeys (id integer primary key, twconkey text, twconsec text, twauthtok text, twauthsec text,)', [],
+        function(tx, result) {
+        alert("Table created successfully");
+        },
+        function(error) {
+        alert("Error occurred while creating the table.");
+        });
+        });
+
+        var twconkey="Zl45nPiw8U1yPQk49CDzmNBb9";
+        var twconsec="VwHEWwMudFwzCJUKTqGQidTXwiYix3mbndIKHswWdlabgTU4uG";
+        myDB.transaction(function(transaction) {
+        var executeQuery = "INSERT INTO allkeys (twconkey, twconsec) VALUES (?,?)";
+        transaction.executeSql(executeQuery, [twconkey,twconsec]
+        , function(tx, result) {
+        alert('Inserted');
+        },
+        function(error){
+        alert('Insert Error occurred');
+        });
+        });
+
         cb.setConsumerKey("Zl45nPiw8U1yPQk49CDzmNBb9", "VwHEWwMudFwzCJUKTqGQidTXwiYix3mbndIKHswWdlabgTU4uG");
                              
         function login(){
@@ -99,8 +124,8 @@ function authorize(o) {
 function sendTweet(){
             var oauthtok = window.localStorage.getItem("accessToken");
             var oauthsec = window.localStorage.getItem("tokenSecret");
-        cb.setToken(oauthtok, oauthsec);
-        var param = $('#tweet').val();
+            cb.setToken(oauthtok, oauthsec);
+            var param = $('#tweet').val();
 
                        cb.__call(
                             "statuses_update", {"status": param},
