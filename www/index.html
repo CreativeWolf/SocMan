@@ -40,8 +40,6 @@
                     // GLOBAL VARS
         var cb = new Codebird;
 
-        var keysDB = window.sqlitePlugin.openDatabase({name: "keysDB.db", location: 'default'});
-
         cb.setConsumerKey("Zl45nPiw8U1yPQk49CDzmNBb9", "VwHEWwMudFwzCJUKTqGQidTXwiYix3mbndIKHswWdlabgTU4uG");
                              
         function login(){
@@ -52,6 +50,8 @@
             'Done'                  // buttonName
         );                     
 
+        var keysDB = window.sqlitePlugin.openDatabase({name: "keysDB.db", location: 'default'});
+        
         keysDB.transaction(function(transaction) {
         transaction.executeSql('CREATE TABLE IF NOT EXISTS allkeys (id integer primary key, twconkey text, twconsec text, twauthtok text, twauthsec text,)', [],
         function(tx, result) {
