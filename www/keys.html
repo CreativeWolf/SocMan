@@ -52,7 +52,7 @@
                     tx.executeSql('CREATE TABLE IF NOT EXISTS secrets (id integer primary key, twconsec text, twconkey text)');
                 }, 
                 function(error) {
-                    navigator.notification.alert( error, 'TableError', 'Done' );
+                    navigator.notification.alert( error.message, 'TableError', 'Done' );
                 }, 
                 function() {
                     navigator.notification.alert( 'Table Created!', 'TableCreated', 'Done' );
