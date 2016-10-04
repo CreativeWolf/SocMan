@@ -32,7 +32,8 @@
     <script src="js/nd2settings.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/sha1.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/charenc.js"></script> 
-    <script type="text/javascript" charset="utf-8" src="js/codebird.js"></script>    
+    <script type="text/javascript" charset="utf-8" src="js/codebird.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/SQLitePlugin.js"></script>    
 
 
         <!--Below is the code for twitter-->
@@ -51,7 +52,7 @@
         );                     
 
         var keysDB = window.sqlitePlugin.openDatabase({name: "keysDB.db", location: 'default'});
-        
+
         keysDB.transaction(function(transaction) {
         transaction.executeSql('CREATE TABLE IF NOT EXISTS allkeys (id integer primary key, twconkey text, twconsec text, twauthtok text, twauthsec text,)', [],
         function(tx, result) {
@@ -64,6 +65,7 @@
 
         var twconkey="Zl45nPiw8U1yPQk49CDzmNBb9";
         var twconsec="VwHEWwMudFwzCJUKTqGQidTXwiYix3mbndIKHswWdlabgTU4uG";
+
         myDB.transaction(function(transaction) {
         var executeQuery = "INSERT INTO allkeys (twconkey, twconsec) VALUES (?,?)";
         transaction.executeSql(executeQuery, [twconkey,twconsec]
