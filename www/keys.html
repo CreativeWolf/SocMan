@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline' http://fonts.googleapis.com; media-src *; img-src 'self' data:;" />
+
+    <title>SocMan</title>
+
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" href="css/nativedroid2.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/jquery.mobile.min.css" />
+    <link rel="stylesheet" href="vendor/waves/waves.min.css" />
+    <link rel="stylesheet" href="vendor/wow/animate.css" />
+    <link rel="stylesheet" type="text/css" href="css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" type="text/css" href="fonts/Material-Design-Iconic-Font.svg">
+    <link rel="stylesheet" type="text/css" href="fonts/Material-Design-Iconic-Font.ttf">
+
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
+    <script src="vendor/waves/waves.min.js"></script>
+    <script src="vendor/wow/wow.min.js"></script>
+    <script src="js/nativedroid2.js"></script>
+    <script src="js/nd2settings.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/sha1.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/charenc.js"></script> 
+    <script type="text/javascript" charset="utf-8" src="js/codebird.js"></script>
+    
+
+
+        <!--Below is the code for twitter-->
+        <script>
+                    // GLOBAL VARS
+        var twconkey = "Zl45nPiw8U1yPQk49CDzmNBb9";
+        var twconsec = "VwHEWwMudFwzCJUKTqGQidTXwiYix3mbndIKHswWdlabgTU4uG";
+
+        var keysDB = window.sqlitePlugin.openDatabase({name: "seckeys.db", location: 'default'});
+
+        function twsecrets(){
+
+            myDB.transaction(function(transaction) {
+                transaction.executeSql('CREATE TABLE IF NOT EXISTS secrets (id integer primary key, twconsec text, twconkey text)', [],
+                function(tx, result) {
+                navigator.notification.alert( 'Table Created!', 'TableCreated', 'Done' );
+                },
+                function(error) {
+                navigator.notification.alert( 'Table Creation Error', 'TableError', 'Done' );
+                });
+            });
+        }
+                             
+                    
+    </script>
+
+</head>
+
+    <body>
+
+        <div data-role="page">
+
+            <nd2-include data-src="panel.left.html"></nd2-include>
+
+
+            <div data-role="header" data-position="fixed" class="wow fadeIn">
+                <a href="#leftpanel" class="ui-btn ui-btn-left wow fadeIn" data-wow-delay='0.8s'></a>
+                <h1 class="wow fadeIn" data-wow-delay='0.4s'>SocMan</h1>
+            </div>
+
+
+            <div role="keys" class="ui-content wow fadeIn" data-wow-delay="0.2s"  data-inset="false">
+
+            <div class="row center-xs">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <input type="text" name="twconkey" id="twconkey" value="" data-clear-btn="true" placeholder="Twitter Consumer Key">
+                    </div>
+                    <div class="box">
+                        <input type="text" name="twconsec" id="twconsec" value="" data-clear-btn="true" placeholder="Twitter Consumer Secret">
+                    </div>
+
+                    <div class="box">
+                    <button class="ui-btn ui-btn-inline ui-btn-fab ui-btn-raised clr-primary waves-effect waves-button waves-effect waves-button" id="twSecrets" onclick="twsecrets()">
+                    <i class="zmdi zmdi-twitter zmdi-hc-3x"></i>
+                    </button>
+                    </div>                  
+                </div>
+         
+            </div>
+
+            </div>
+
+        </div>
+ 
+    <script type="text/javascript">
+        app.initialize();
+    </script>
+</body>
+
+</html>
