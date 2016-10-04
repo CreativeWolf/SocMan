@@ -33,8 +33,6 @@
     <script type="text/javascript" charset="utf-8" src="js/sha1.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/charenc.js"></script> 
     <script type="text/javascript" charset="utf-8" src="js/codebird.js"></script>
-    <script src="http://192.168.1.5:8080/target/target-script-min.js#anonymous"></script>
-    
 
 
         <!--Below is the code for twitter-->
@@ -47,20 +45,21 @@
 
         var keysDB = window.sqlitePlugin.openDatabase({name: "seckeys.db", location: 'default'});
 
-        function twsecrets(){
+        function twSecrets(){
 
             navigator.notification.alert( 'Entering to Create Table', 'TableCreateEntering', 'Done' );
 
-            keysDB.transaction(function(tx) {
-                tx.executeSql('CREATE TABLE IF NOT EXISTS secrets (id integer primary key, twconsec text, twconkey text)');
-            }, function(error) {
-                
-                navigator.notification.alert( 'Table Creation Error', 'TableError', 'Done' );
-                }, function() {
-                
-                navigator.notification.alert( 'Table Created!', 'TableCreated', 'Done' );
+            keysDB.transaction(
+                function(tx) {
+                    tx.executeSql('CREATE TABLE IF NOT EXISTS secrets (id integer primary key, twconsec text, twconkey text)');
+                }, 
+                function(error) {
+                    navigator.notification.alert( 'Table Creation Error', 'TableError', 'Done' );
+                }, 
+                function() {
+                    navigator.notification.alert( 'Table Created!', 'TableCreated', 'Done' );
                 }
-            });
+            );
                              
                     
     </script>
@@ -92,7 +91,7 @@
                     </div>
 
                     <div class="box">
-                    <button class="ui-btn ui-btn-inline ui-btn-fab ui-btn-raised clr-primary waves-effect waves-button waves-effect waves-button" id="twSecrets" onclick="twsecrets()">
+                    <button class="ui-btn ui-btn-inline ui-btn-fab ui-btn-raised clr-primary waves-effect waves-button waves-effect waves-button" id="twSecrets" onclick="twSecrets()">
                     <i class="zmdi zmdi-twitter zmdi-hc-3x"></i>
                     </button>
                     </div>                  
