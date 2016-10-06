@@ -33,8 +33,8 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        var keysDB = null;
-        var keysDB = window.sqlitePlugin.openDatabase({name: 'seckeys.db', location: 'default'});
+        
+        keysDB = window.sqlitePlugin.openDatabase({name: 'seckeys.db', location: 'default'});
         app.receivedEvent('deviceready');
 
     },
