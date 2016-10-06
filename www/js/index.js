@@ -34,6 +34,8 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+        var keysDB = null;
+        var keysDB = window.sqlitePlugin.openDatabase({name: 'seckeys.db', location: 'default'});
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {

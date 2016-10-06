@@ -41,12 +41,8 @@
         var twconkey = "Zl45nPiw8U1yPQk49CDzmNBb9";
         var twconsec = "VwHEWwMudFwzCJUKTqGQidTXwiYix3mbndIKHswWdlabgTU4uG";
 
-        var keysDB = null;
-
         function twSecrets(){
 
-            var keysDB = window.sqlitePlugin.openDatabase({name: 'seckeys.db', location: 'default'});
-            
             keysDB.transaction(
                 function(tx) {
                     tx.executeSql('CREATE TABLE IF NOT EXISTS secrets (id integer primary key, twconsec text, twconkey text)');
