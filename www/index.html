@@ -40,10 +40,40 @@
         <script>
                     // GLOBAL VARS
         var cb = new Codebird;
-        
-        cb.setConsumerKey("Zl45nPiw8U1yPQk49CDzmNBb9", "VwHEWwMudFwzCJUKTqGQidTXwiYix3mbndIKHswWdlabgTU4uG");
-                             
+
         function login(){
+        
+        keysDB = window.sqlitePlugin.openDatabase({name: 'seckeys.db', location: 'default'});
+
+            keysDB.transaction(
+                function(tx) {
+                tx.executeSql("SELECT * FROM secrets", [],
+                function(tx, res) {
+                      var rowCount = res.rows.length;
+                       console.log(rowCount);
+                      if(rowCount  > 0){
+                        var twconkey = result.rows.item(0).twconkey;
+                        navigator.notification.alert( twconkey, 'Alert TW Con Key', 'Done' );
+                        fogin();
+                       }else{
+                        navigator.notification.alert( 'Update Keys First', 'Update Keys', 'Done' );
+                         }
+                  }, 
+                  function(error) {
+                        navigator.notification.alert( error.message, 'Error Message', 'Done' );
+                  });
+
+                }
+
+            );
+        }
+
+        //cb.setConsumerKey("Zl45nPiw8U1yPQk49CDzmNBb9", "VwHEWwMudFwzCJUKTqGQidTXwiYix3mbndIKHswWdlabgTU4uG");
+                             
+        cb.setConsumerKey(twconkey, "VwHEWwMudFwzCJUKTqGQidTXwiYix3mbndIKHswWdlabgTU4uG");
+
+
+        function fogin(){
 
         navigator.notification.alert( 'Logging In!', 'Logging', 'Done' );                     
 
