@@ -53,22 +53,7 @@
                       if(rowCount  > 0){
                         twconkey = res.rows.item(0).twconkey;
                         // navigator.notification.alert( twconkey, 'Alert TW Con Key', 'Done' );
-                        fogin();
-                       }else{
-                        navigator.notification.alert( 'Update Keys First', 'Update Keys', 'Done' );
-                         }
-                  }, 
-                  function(error) {
-                        navigator.notification.alert( error.message, 'Error Message', 'Done' );
-                  });
-
-                }
-
-            );
-        }
-
-        //cb.setConsumerKey("Zl45nPiw8U1yPQk49CDzmNBb9", "VwHEWwMudFwzCJUKTqGQidTXwiYix3mbndIKHswWdlabgTU4uG");
-                             
+                        
         cb.setConsumerKey(twconkey, "VwHEWwMudFwzCJUKTqGQidTXwiYix3mbndIKHswWdlabgTU4uG");
 
 
@@ -101,6 +86,22 @@
         );
 
         }
+                       }else{
+                        navigator.notification.alert( 'Update Keys First', 'Update Keys', 'Done' );
+                         }
+                  }, 
+                  function(error) {
+                        navigator.notification.alert( error.message, 'Error Message', 'Done' );
+                  });
+
+                }
+
+            );
+        }
+
+        //cb.setConsumerKey("Zl45nPiw8U1yPQk49CDzmNBb9", "VwHEWwMudFwzCJUKTqGQidTXwiYix3mbndIKHswWdlabgTU4uG");
+                             
+
 
 function authorize(o) {
     var currentUrl = o.url;
