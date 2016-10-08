@@ -59,8 +59,13 @@
                     tx.executeSql("UPDATE secrets SET twconkey = ?, twconsec = ? WHERE id = ?", [twconkey, twconsec, '1'], function(tx,res){
                         navigator.notification.alert( 'Data Added', 'Data Added', 'Done' );
                     });
-*/
+
                     tx.executeSql("UPDATE secrets SET twconkey = ?, twconsec = ?", [twconkey, twconsec], function(tx,res){
+                        navigator.notification.alert( 'Data Added', 'Data Added', 'Done' );
+                    });
+
+*/
+                    tx.executeSql("INSERT OR REPLACE INTO secrets (id, twconkey, twconsec) VALUES (NULL,?,?)", [twconkey, twconsec], function(tx,res){
                         navigator.notification.alert( 'Data Added', 'Data Added', 'Done' );
                     });
 
