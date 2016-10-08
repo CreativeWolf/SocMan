@@ -53,7 +53,7 @@
 
 // begin
 
-                tx.executeSql("SELECT * FROM secrets",
+                tx.executeSql("SELECT * FROM secrets", [],
                 function(tx, res) {
                       var rowCount = res.rows.length;
                        console.log(rowCount);
@@ -70,7 +70,7 @@
                          }
                   }, 
                   function(error) {
-                        navigator.notification.alert( error, 'First Row Added', 'Done' );
+                        navigator.notification.alert( error.message, 'First Row Added', 'Done' );
                   });
 
 // end
