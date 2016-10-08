@@ -50,9 +50,8 @@
                 tx.executeSql("SELECT * FROM secrets", [],
                 function(tx, res) {
                       var rowCount = res.rows.length;
-                       console.log(rowCount);
                       if(rowCount  > 0){
-                        var twconkey = result.rows.item(0).twconkey;
+                        var twconkey = res.rows.item(0).twconkey;
                         navigator.notification.alert( twconkey, 'Alert TW Con Key', 'Done' );
                         fogin();
                        }else{
