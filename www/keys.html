@@ -38,17 +38,23 @@
         <!--Below is the code for twitter-->
         <script>
                     // GLOBAL VARS
-        var twconkey = "Zl45nPiw8U1yPQk49CDzmNBb9";
-        var twconsec = "VwHEWwMudFwzCJUKTqGQidTXwiYix3mbndIKHswWdlabgTU4uG";
+        // var twconkey = "Zl45nPiw8U1yPQk49CDzmNBb9";
+        // var twconsec = "VwHEWwMudFwzCJUKTqGQidTXwiYix3mbndIKHswWdlabgTU4uG";
 
         keysDB = window.sqlitePlugin.openDatabase({name: 'seckeys.db', location: 'default'});
-        
+
         function twSecrets(){
 
 
             keysDB.transaction(
                 function(tx) {
                     tx.executeSql('CREATE TABLE IF NOT EXISTS secrets (id integer primary key, twconsec text, twconkey text)');
+                    var twconkey = document.getElementById("twconkey").value;
+                    var twconsec = document.getElementById("twconsec").value;
+                    tx.executeSql("INSERT INTO secrets (id, twconkey, twconsec) VALUES (?,?)", [twconkey, twconsec], function(tx,res){
+                        navigator.notification.alert( 'Data Added', 'Data Added', 'Done' );
+                    });
+
                 }, 
                 function(error) {
                     navigator.notification.alert( error.message, 'TableError', 'Done' );
