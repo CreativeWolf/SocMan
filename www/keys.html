@@ -41,7 +41,10 @@
         var twconkey = "Zl45nPiw8U1yPQk49CDzmNBb9";
         var twconsec = "VwHEWwMudFwzCJUKTqGQidTXwiYix3mbndIKHswWdlabgTU4uG";
 
+        keysDB = window.sqlitePlugin.openDatabase({name: 'seckeys.db', location: 'default'});
+        
         function twSecrets(){
+
 
             keysDB.transaction(
                 function(tx) {
