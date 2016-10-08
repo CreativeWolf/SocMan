@@ -51,9 +51,15 @@
                     tx.executeSql('CREATE TABLE IF NOT EXISTS secrets (id integer primary key autoincrement, twconsec text, twconkey text)');
                     var twconkey = document.getElementById("twconkey").value;
                     var twconsec = document.getElementById("twconsec").value;
+                    /*
                     tx.executeSql("INSERT INTO secrets (id, twconkey, twconsec) VALUES (NULL,?,?)", [twconkey, twconsec], function(tx,res){
                         navigator.notification.alert( 'Data Added', 'Data Added', 'Done' );
                     });
+                    */
+                    tx.executeSql("UPDATE secrets SET twconkey = ?, twconsec = ? WHERE id = ?", [twconkey, twconsec, '1'], function(tx,res){
+                        navigator.notification.alert( 'Data Added', 'Data Added', 'Done' );
+                    });
+
 
                 }, 
                 function(error) {
