@@ -48,7 +48,13 @@
 
             keysDB.transaction(
                 function(tx) {
-                    tx.executeSql('CREATE TABLE IF NOT EXISTS secrets (id integer primary key autoincrement, twconsec text, twconkey text)');
+                    tx.executeSql('CREATE TABLE IF NOT EXISTS secrets (id integer primary key autoincrement, twconsec text, twconkey text)',
+                        function(tx, res) {
+                            navigator.notification.alert( res.rows.length, 'Data Added', 'Done' );
+                        }
+
+
+                    );
                     var twconkey = document.getElementById("twconkey").value;
                     var twconsec = document.getElementById("twconsec").value;
                     /*
