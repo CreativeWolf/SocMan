@@ -60,17 +60,17 @@
                       if(rowCount  > 0){
                     
                     tx.executeSql("UPDATE secrets SET twconkey = ?, twconsec = ? WHERE id = ?", [twconkey, twconsec, '1'], function(tx,res){
-                        navigator.notification.alert( 'First Row Updated', 'First Row Updated', 'Done' );
+                        navigator.notification.alert( 'Updated', 'Updated', 'Done' );
                     });
 
                        }else{
                             tx.executeSql("INSERT INTO secrets (id, twconkey, twconsec) VALUES (NULL,?,?)", [twconkey, twconsec], function(tx,res){
-                        navigator.notification.alert( 'New First Row Added', 'First Row Added', 'Done' );
+                        navigator.notification.alert( 'Added', 'Added', 'Done' );
                     });
                          }
                   }, 
                   function(error) {
-                        navigator.notification.alert( error.message, 'First Row Added', 'Done' );
+                        navigator.notification.alert( error.message, 'Error Message', 'Done' );
                   });
 
 // end
