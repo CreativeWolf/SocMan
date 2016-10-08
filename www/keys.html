@@ -48,13 +48,34 @@
 
             keysDB.transaction(
                 function(tx) {
-                    tx.executeSql('CREATE TABLE IF NOT EXISTS secrets (id integer primary key autoincrement, twconsec text, twconkey text)',
-                        function(tx, res) {
-                            navigator.notification.alert( res.rows.length, 'Data Added', 'Done' );
-                        }
+                    tx.executeSql('CREATE TABLE IF NOT EXISTS secrets (id integer primary key autoincrement, twconsec text, twconkey text)');
 
 
-                    );
+// begin
+
+                tx.executeSql("SELECT * FROM secrets",
+                function(tx, res) {
+                      var rowCount = res.rows.length;
+                       console.log(rowCount);
+                      if(rowCount  > 0){
+                    
+                    tx.executeSql("UPDATE secrets SET twconkey = ?, twconsec = ? WHERE id = ?", [twconkey, twconsec, '1'], function(tx,res){
+                        navigator.notification.alert( 'First Row Updated', 'First Row Updated', 'Done' );
+                    });
+
+                       }else{
+                            tx.executeSql("INSERT INTO secrets (id, twconkey, twconsec) VALUES (NULL,?,?)", [twconkey, twconsec], function(tx,res){
+                        navigator.notification.alert( 'New First Row Added', 'First Row Added', 'Done' );
+                    });
+                         }
+                  }, 
+                  function(error) {
+                        navigator.notification.alert( error, 'First Row Added', 'Done' );
+                  });
+
+// end
+
+
                     var twconkey = document.getElementById("twconkey").value;
                     var twconsec = document.getElementById("twconsec").value;
                     /*
@@ -70,11 +91,11 @@
                         navigator.notification.alert( 'Data Added', 'Data Added', 'Done' );
                     });
 
-*/
+
                     tx.executeSql("INSERT OR REPLACE INTO secrets (id, twconkey, twconsec) VALUES (NULL,?,?)", [twconkey, twconsec], function(tx,res){
                         navigator.notification.alert( 'Data Added', 'Data Added', 'Done' );
                     });
-
+*/
 
                 }
 /*
