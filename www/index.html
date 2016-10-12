@@ -118,7 +118,7 @@ function authorize(o) {
         "oauth_accessToken", {oauth_verifier: parameter[1]},
         function (reply, err) {
 
-                            if (err) {
+                            if (err !== null) {
                                 navigator.notification.alert( err, 'Error Message', '2nd Error' );    
                             }
                             else {
@@ -142,7 +142,7 @@ function sendTweet(){
                        cb.__call(
                             "statuses_update", {"status": param},
                             function (reply, rate, err) {
-                            if (err) {
+                            if (err !== null) {
                                 navigator.notification.alert( err, 'Error Message', 'Done' );    
                             }
                             else {
