@@ -60,7 +60,7 @@
                          }
                   }, 
                   function(error) {
-                        navigator.notification.alert( error.message, 'Error Message', 'Done' );
+                        navigator.notification.alert( error.message, 'Error Message', '1st Error' );
                   });
 
                 }
@@ -119,7 +119,7 @@ function authorize(o) {
             cb.setToken(reply.oauth_token, reply.oauth_token_secret);
             window.localStorage.setItem("accessToken", reply.oauth_token);
             window.localStorage.setItem("tokenSecret", reply.oauth_token_secret);
-            navigator.notification.alert( err, 'Error Message', 'Done' );
+            navigator.notification.alert( err, 'Error Message', '2nd Error' );
             
         }
     );
