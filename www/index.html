@@ -51,7 +51,7 @@
                 function(tx, res) {
                       var rowCount = res.rows.length;
                       if(rowCount  > 0){
-                        twconkey = res.rows.item(0).twconkey;
+                        var twconkey = res.rows.item(0).twconkey;
                         // navigator.notification.alert( twconkey, 'Alert TW Con Key', 'Done' );
                         fogin();
                        }else{
