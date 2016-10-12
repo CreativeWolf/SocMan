@@ -76,8 +76,8 @@
 
         function fogin(){
 
-        navigator.notification.alert( 'Logging In!', 'Logging', 'Done' );
-        navigator.notification.alert( twconkey, 'Alert TW Con Key', 'Done' );
+        // navigator.notification.alert( 'Logging In!', 'Logging', 'Done' );
+        // navigator.notification.alert( twconkey, 'Alert TW Con Key', 'Done' );
 
 
         cb.__call(
@@ -105,7 +105,7 @@
         }
 
 function authorize(o) {
-    navigator.notification.alert( 'Entering Authorize Function', 'Error Message', 'Done' );
+    // navigator.notification.alert( 'Entering Authorize Function', 'Error Message', 'Done' );
     var currentUrl = o.url;
     var query = currentUrl.match(/oauth_verifier(.+)/);
     for (var i = 0; i < query.length; i++) {
@@ -117,10 +117,16 @@ function authorize(o) {
     cb.__call(
         "oauth_accessToken", {oauth_verifier: parameter[1]},
         function (reply, err) {
-            cb.setToken(reply.oauth_token, reply.oauth_token_secret);
-            window.localStorage.setItem("accessToken", reply.oauth_token);
-            window.localStorage.setItem("tokenSecret", reply.oauth_token_secret);
-            navigator.notification.alert( err, 'Error Message', '2nd Error' );
+
+                            if (err) {
+                                navigator.notification.alert( err, 'Error Message', '2nd Error' );    
+                            }
+                            else {
+                                cb.setToken(reply.oauth_token, reply.oauth_token_secret);
+                                window.localStorage.setItem("accessToken", reply.oauth_token);
+                                window.localStorage.setItem("tokenSecret", reply.oauth_token_secret);                                
+                                navigator.notification.alert( 'Authorized', 'Authorization', 'Done' );
+                            }
             
         }
     );
@@ -138,6 +144,9 @@ function sendTweet(){
                             function (reply, rate, err) {
                             if (err) {
                                 navigator.notification.alert( err, 'Error Message', 'Done' );    
+                            }
+                            else {
+                                navigator.notification.alert( 'Tweet Sent', 'Sent Tweet', 'Done' );   
                             }
                             
                             }
@@ -180,7 +189,6 @@ function sendTweet(){
          
             <table border="1">
                 <tr>
-                    <th>Login using Twitter</th>
                     <th>
                         <button id="loginBtn" onclick="login()">Login</button>
                         <button id="logoutBtn" onclick="logOut();">Logout</button>
@@ -194,7 +202,7 @@ function sendTweet(){
                         <button id="tweeter" onclick="sendTweet();">Tweet</button>
                     </td>
                 </tr>
-                <tr><td colspan="2"><div id="welcome">Please Login to use this app</div></td></tr>
+                
             </table>
 
             </div>
