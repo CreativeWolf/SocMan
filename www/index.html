@@ -79,6 +79,7 @@
 
 
         cb.__call(
+            navigator.notification.alert( 'Entering Call Function', 'Error Message', 'Done' );
             "oauth_requestToken",
                 {oauth_callback: "http://localhost/"},
                 function (reply) {
@@ -103,6 +104,7 @@
         }
 
 function authorize(o) {
+    navigator.notification.alert( 'Entering Authorize Function', 'Error Message', 'Done' );
     var currentUrl = o.url;
     var query = currentUrl.match(/oauth_verifier(.+)/);
     for (var i = 0; i < query.length; i++) {
