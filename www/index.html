@@ -135,7 +135,10 @@ function sendTweet(){
                        cb.__call(
                             "statuses_update", {"status": param},
                             function (reply, rate, err) {
-                            navigator.notification.alert( err, 'Error Message', 'Done' );
+                            if (err) {
+                                navigator.notification.alert( err, 'Error Message', 'Done' );    
+                            }
+                            
                             }
                         );
 
