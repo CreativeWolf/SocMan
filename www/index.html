@@ -51,8 +51,9 @@
                 function(tx, res) {
                       var rowCount = res.rows.length;
                       if(rowCount  > 0){
-                        var twconkey = res.rows.item(0).twconkey;
+                        twconkey = res.rows.item(0).twconkey;
                         // navigator.notification.alert( twconkey, 'Alert TW Con Key', 'Done' );
+                        cb.setConsumerKey(twconkey, "VwHEWwMudFwzCJUKTqGQidTXwiYix3mbndIKHswWdlabgTU4uG");
                         fogin();
                        }else{
                         navigator.notification.alert( 'Update Keys First', 'Update Keys', 'Done' );
@@ -68,8 +69,8 @@
         }
 
         //cb.setConsumerKey("Zl45nPiw8U1yPQk49CDzmNBb9", "VwHEWwMudFwzCJUKTqGQidTXwiYix3mbndIKHswWdlabgTU4uG");
-                             
-        cb.setConsumerKey(twconkey, "VwHEWwMudFwzCJUKTqGQidTXwiYix3mbndIKHswWdlabgTU4uG");
+        // navigator.notification.alert( twconkey, 'Alert TW Con Key', 'Done' );                             
+        // cb.setConsumerKey(twconkey, "VwHEWwMudFwzCJUKTqGQidTXwiYix3mbndIKHswWdlabgTU4uG");
 
 
         function fogin(){
