@@ -118,8 +118,8 @@ function authorize(o) {
         "oauth_accessToken", {oauth_verifier: parameter[1]},
         function (reply, err) {
 
-                            if (err) {
-                                navigator.notification.alert( err.message, 'Error Message', '2nd Error' );    
+                            if (err.limit !== null) {
+                                navigator.notification.alert( err, 'Error Message', '2nd Error' );    
                             }
                             else {
                                 cb.setToken(reply.oauth_token, reply.oauth_token_secret);
