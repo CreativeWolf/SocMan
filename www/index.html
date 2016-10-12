@@ -41,11 +41,10 @@
                     // GLOBAL VARS
         var cb = new Codebird;
 
-        var keysDB = window.sqlitePlugin.openDatabase({name: 'seckeys.db', location: 'default'});
-
         function login(){
         
-        
+        var keysDB = window.sqlitePlugin.openDatabase({name: 'seckeys.db', location: 'default'});
+
             keysDB.transaction(
                 function(tx) {
                     tx.executeSql('CREATE TABLE IF NOT EXISTS secrets (id integer primary key autoincrement, twconsec text, twconkey text)');
