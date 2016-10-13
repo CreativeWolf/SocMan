@@ -46,7 +46,7 @@
         
             keysDB.transaction(
                 function(tx) {
-                    tx.executeSql('CREATE TABLE IF NOT EXISTS secrets (id integer primary key autoincrement, twconsec text, twconkey text)');
+                tx.executeSql('CREATE TABLE IF NOT EXISTS secrets (id integer primary key autoincrement, twconsec text, twconkey text, oauthtok text, oauthsec text)');
                     tx.executeSql("SELECT * FROM secrets", [],
                 function(tx, res) {
                       var rowCount = res.rows.length;
@@ -122,10 +122,28 @@ function authorize(o) {
                             }
                             else {
                                 // cb.setToken(reply.oauth_token, reply.oauth_token_secret);
+                            keysDB.transaction(
+                                function(tx) {
+                                tx.executeSql("UPDATE secrets SET oauthtok = ?, oauthsec = ? WHERE id = ?", [reply.oauth_token, reply.oauth_token_secret, '1']);
+                                tx.executeSql("SELECT * FROM secrets", [], function(tx, res) { 
+                                  oauthtok = res.rows.item(0).oauthtok;
+                                  oauthsec = res.rows.item(0).oauthsec;
+                                },
+                                function(error) {
+                                    navigator.notification.alert( error.message, 'Error Message', 'DB Error' );
+                                });
+                                }
+
+
+                            );
+
+/*
                                 window.localStorage.setItem("accessToken", reply.oauth_token);
                                 window.localStorage.setItem("tokenSecret", reply.oauth_token_secret);
                                 oauthtok = window.localStorage.getItem("accessToken");
                                 oauthsec = window.localStorage.getItem("tokenSecret");
+*/
+
                                 cb.setToken(oauthtok, oauthsec);                                
                                 navigator.notification.alert( 'Authorized', 'Authorization', 'Done' );
                             }
