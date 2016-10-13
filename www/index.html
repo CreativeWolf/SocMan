@@ -138,6 +138,7 @@ function authorize(o) {
 function sendTweet(){
 
             var param = $('#tweet').val();
+            navigator.notification.alert( oauthtok, 'OAUTHTOKEN', 'OAUTHTOKEN Check' );
 
                        cb.__call(
                             "statuses_update", {"status": param},
