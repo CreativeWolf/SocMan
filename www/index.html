@@ -40,11 +40,10 @@
         <script>
                     // GLOBAL VARS
         var cb = new Codebird;
+        var keysDB = window.sqlitePlugin.openDatabase({name: 'seckeys.db', location: 'default'});
 
         function login(){
         
-        var keysDB = window.sqlitePlugin.openDatabase({name: 'seckeys.db', location: 'default'});
-
             keysDB.transaction(
                 function(tx) {
                     tx.executeSql('CREATE TABLE IF NOT EXISTS secrets (id integer primary key autoincrement, twconsec text, twconkey text)');
@@ -143,10 +142,10 @@ function sendTweet(){
                             "statuses_update", {"status": param},
                             function (reply, rate, err) {
                             if (err !== null) {
-                                navigator.notification.alert( err.message, 'Error Message', '3rd Error' );    
+                                navigator.notification.alert( 'Tweet Sent', 'Sent Tweet', 'Sent' );
                             }
                             else {
-                                navigator.notification.alert( 'Tweet Sent', 'Sent Tweet', 'Sent' );   
+                                navigator.notification.alert( err, 'Error Msg', 'Error Sending Tweet' );
                             }
                             
                             }
