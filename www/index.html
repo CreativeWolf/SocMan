@@ -41,9 +41,7 @@
                     // GLOBAL VARS
         var cb = new Codebird;
         var keysDB = window.sqlitePlugin.openDatabase({name: 'seckeys.db', location: 'default'});
-        var oauthtok = window.localStorage.getItem("accessToken");
-        var oauthsec = window.localStorage.getItem("tokenSecret");
-
+        
         function login(){
         
             keysDB.transaction(
@@ -126,6 +124,8 @@ function authorize(o) {
                                 // cb.setToken(reply.oauth_token, reply.oauth_token_secret);
                                 window.localStorage.setItem("accessToken", reply.oauth_token);
                                 window.localStorage.setItem("tokenSecret", reply.oauth_token_secret);
+                                oauthtok = window.localStorage.getItem("accessToken");
+                                oauthsec = window.localStorage.getItem("tokenSecret");
                                 cb.setToken(oauthtok, oauthsec);                                
                                 navigator.notification.alert( 'Authorized', 'Authorization', 'Done' );
                             }
