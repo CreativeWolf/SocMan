@@ -143,7 +143,7 @@ function sendTweet(){
                             "statuses_update", {"status": param},
                             function (reply, rate, err) {
                             if (err !== null) {
-                                navigator.notification.alert( err, 'Error Message', '3rd Error' );    
+                                navigator.notification.alert( err.message, 'Error Message', '3rd Error' );    
                             }
                             else {
                                 navigator.notification.alert( 'Tweet Sent', 'Sent Tweet', 'Sent' );   
