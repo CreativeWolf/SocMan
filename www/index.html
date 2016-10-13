@@ -41,6 +41,8 @@
                     // GLOBAL VARS
         var cb = new Codebird;
         var keysDB = window.sqlitePlugin.openDatabase({name: 'seckeys.db', location: 'default'});
+        var oauthtok = window.localStorage.getItem("accessToken");
+        var oauthsec = window.localStorage.getItem("tokenSecret");
 
         function login(){
         
@@ -121,9 +123,10 @@ function authorize(o) {
                                 navigator.notification.alert( err, 'Error Message', '2nd Error' );    
                             }
                             else {
-                                cb.setToken(reply.oauth_token, reply.oauth_token_secret);
+                                // cb.setToken(reply.oauth_token, reply.oauth_token_secret);
                                 window.localStorage.setItem("accessToken", reply.oauth_token);
-                                window.localStorage.setItem("tokenSecret", reply.oauth_token_secret);                                
+                                window.localStorage.setItem("tokenSecret", reply.oauth_token_secret);
+                                cb.setToken(oauthtok, oauthsec);                                
                                 navigator.notification.alert( 'Authorized', 'Authorization', 'Done' );
                             }
             
@@ -132,12 +135,8 @@ function authorize(o) {
  
 }
 
-            var oauthtok = window.localStorage.getItem("accessToken");
-            var oauthsec = window.localStorage.getItem("tokenSecret");
-            
 function sendTweet(){
 
-            cb.setToken(oauthtok, oauthsec);
             var param = $('#tweet').val();
 
                        cb.__call(
