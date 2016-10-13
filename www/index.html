@@ -132,9 +132,11 @@ function authorize(o) {
  
 }
 
-function sendTweet(){
             var oauthtok = window.localStorage.getItem("accessToken");
             var oauthsec = window.localStorage.getItem("tokenSecret");
+            
+function sendTweet(){
+
             cb.setToken(oauthtok, oauthsec);
             var param = $('#tweet').val();
 
