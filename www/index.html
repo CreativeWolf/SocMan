@@ -76,7 +76,7 @@
         function fogin(){
 
         // navigator.notification.alert( 'Logging In!', 'Logging', 'Done' );
-        navigator.notification.alert( twconkey, 'Alert TW Con Key', 'TWCONKEY' );
+        // navigator.notification.alert( twconkey, 'Alert TW Con Key', 'TWCONKEY' );
 
 
         cb.__call(
@@ -166,7 +166,7 @@ function sendTweet(){
                             "statuses_update", {"status": param},
                             function (reply, rate, err) {
                             if (err !== null) {
-                                navigator.notification.alert( 'Tweet Sent', 'Sent Tweet', 'Sent' );
+                                navigator.notification.alert( err, 'Sent Tweet', 'Sent' );
                             }
                             else {
                                 navigator.notification.alert( err, 'Error Msg', 'Error Sending Tweet' );
