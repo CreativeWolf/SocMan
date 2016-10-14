@@ -85,23 +85,8 @@
                 function (reply) {
                     // nailed it!
 
-                keysDB.transaction(
-                function(tx) {
-                    tx.executeSql("UPDATE secrets SET oauthtok = ?, oauthsec = ? WHERE id = ?", [reply.oauth_token, reply.oauth_token_secret, '1']);
-                    tx.executeSql("SELECT * FROM secrets", [], function(tx, res) { 
-                      oauthtok = res.rows.item(0).oauthtok;
-                      oauthsec = res.rows.item(0).oauthsec;
-                  },
-                  function(error) {
-                    navigator.notification.alert( error.message, 'Error Message', 'DB Error' );
-                });
-                }
-
-
-                );
-
-                    //cb.setToken(reply.oauth_token, reply.oauth_token_secret);
-                    cb.setToken(oauthtok, oauthsec);
+                    cb.setToken(reply.oauth_token, reply.oauth_token_secret);
+                    // cb.setToken(oauthtok, oauthsec);
                     cb.__call(
                     "oauth_authorize",  {},
                     function (auth_url) {
@@ -148,6 +133,21 @@ function authorize(o) {
                                 oauthsec = window.localStorage.getItem("tokenSecret");
 */
 
+                keysDB.transaction(
+                function(tx) {
+                    tx.executeSql("UPDATE secrets SET oauthtok = ?, oauthsec = ? WHERE id = ?", [reply.oauth_token, reply.oauth_token_secret, '1']);
+                    tx.executeSql("SELECT * FROM secrets", [], function(tx, res) { 
+                      oauthtok = res.rows.item(0).oauthtok;
+                      oauthsec = res.rows.item(0).oauthsec;
+                  },
+                  function(error) {
+                    navigator.notification.alert( error.message, 'Error Message', 'DB Error' );
+                });
+                }
+
+
+                );
+
                                 cb.setToken(oauthtok, oauthsec);                                
                                 navigator.notification.alert( 'Authorized', 'Authorization', 'Done' );
                             }
@@ -166,7 +166,7 @@ function sendTweet(){
                             "statuses_update", {"status": param},
                             function (reply, rate, err) {
                             if (err !== null) {
-                                navigator.notification.alert( err, 'Sent Tweet', 'Sent' );
+                                navigator.notification.alert( rate, 'Sent Tweet', 'Sent' );
                             }
                             else {
                                 navigator.notification.alert( err, 'Error Msg', 'Error Sending Tweet' );
